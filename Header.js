@@ -4,10 +4,10 @@ import HeaderDropdown from "./HeaderDropdown";
 import HeaderDropdownUser from "./HeaderDropdownUser";
 
 export default function Header() {
-  //if dropdown is set to true you will see dropdown menu      
+  //if dropdown is set to true you will see dropdown menu
   const [dropdown, setDropdown] = useState(true);
 
-  //these two onMouse functions toggle the dropdown state so we see it when mouse is over div where dropdwon is located
+  //these two onMouse functions toggle the dropdown state so you see it when mouse is over div where dropdwon is located
   const onMouseEnter = () => {
     setDropdown(true);
   };
@@ -16,6 +16,7 @@ export default function Header() {
     setDropdown(false);
   };
   return (
+    // <div>
     <div className={styles.headerContainer}>
       {/* {sessionStorage.access_token && (
         <div className={styles.centerForm}>
@@ -25,67 +26,49 @@ export default function Header() {
 
       {/* THIS IS WHERE WE CHECK TO SEE IF USER IS LOGGED IN */}
       {sessionStorage.access_token ? (
-        <div className={styles.headerContainer}>
-          <b>Logged In</b>
-          <div
-            className={styles.navitem}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
-             <div className={styles.selectoptionsheader}>
-            Select Options
-            {/* if dropdown state is true make HeaderDropdown visible */}
-            {dropdown && <HeaderDropdownUser />}
+        <div>
+          <div className={styles.left}>
+            {/* <b>Logged In</b> */}
+            <div
+              className={styles.navitem}
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+            >
+              select options
+              {/* if dropdown state is true make HeaderDropdown visible */}
+              {dropdown && <HeaderDropdownUser />}
+            </div>
           </div>
           </div>
-          {/* <div className={styles.centerForm}>
+      ) : (
+        // NOT LOGGED IN
+        <div>
+          <div className={styles.left}>
+            <div
+              className={styles.navitem}
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+            >
+              Select Options
+              {/* if dropdown state is true make HeaderDropdown visible */}
+              {dropdown && <HeaderDropdown />}
+            </div>
+          </div>
+          {/* <div className={styles.centerForm}>Not Logged In</div> */}
+        </div>
+      )}
+       <div className={styles.centerForm}>
             <input
               className={styles.inputField}
               type="text"
               name="stockSearch"
-              placeholder="search for stock"
+              placeholder="search for stock or cryptocurrency"
               // onChange={handleInputChange}
               // value={inputs.username || ""}
               // required
             ></input>
-          </div> */}
-        </div>
-      ) : (
-        // NOT LOGGED IN
-        <div className={styles.headerContainer}>
-          {/* <b>NOT Logged In</b> */}
-          <div
-            className={styles.navitem}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
-            Select Options
-            {/* if dropdown state is true make HeaderDropdown visible */}
-            {dropdown && <HeaderDropdown />}
-          </div>
-        </div>
-      )}   
-      
-      <div className={styles.centerForm}>   
-      <div class="search">          
-        <input          
-          className={styles.inputField}
-          type="text"
-          name="stockSearch"
-          placeholder="Search for stock or crypto by ticker"
-          ></input>
-        </div> 
-      </div>
-      <div className={styles.centerForm}>   
-      <div class="search">          
-        <input          
-          className={styles.inputField}
-          type="text"
-          name="stockSearch"
-          placeholder="Search for stock or crypto by ticker"
-          ></input>
-        </div> 
-      </div>
+          </div>      
+
       <div className={styles.logoright}>
         <a href="#">
           <img
@@ -96,9 +79,6 @@ export default function Header() {
           ></img>
         </a>
       </div>
-      
     </div>
-    
-    
   );
 }
