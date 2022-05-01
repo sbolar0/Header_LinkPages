@@ -14,6 +14,7 @@ export default function About() {
         <div className={styles.collapsibleContainer}>
           <div>
             <Collapsible label="Cameron">
+            className={styles.Alighment}
               <p>Cameron Zuziak is finishing his final semester in the Master of Applied Computer Science program at Frostburg State University. 
                 He holds a bachelor’s degree in Speculative Design and Design Computing from University of California San Diego. Cameron is currently
                 a computational designer at JZMK Partners – an international Architecture and Urban Planning firm. At JZMK, Cameron draws on his 
